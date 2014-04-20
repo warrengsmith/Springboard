@@ -12,6 +12,8 @@ public class KnightAopMainAspectTest {
 			
 	/** The minstrel. */
 	@Mocked Minstrel minstrel;
+	
+	@Mocked SlayDragonQuest quest;
 		
 	/**
 	 * Method Minstrel sings before and after quest test.
@@ -22,6 +24,7 @@ public class KnightAopMainAspectTest {
 			{
 				new Minstrel(); 
 				minstrel.singBeforeQuest(); 
+				quest.embark();
 				minstrel.singAfterQuest();
 			}
 		};
