@@ -5,10 +5,19 @@ import mockit.Mocked;
 
 import org.junit.Test;
 
+/**
+ * The Class BraveKnightTest.
+ */
 public class BraveKnightTest {
 
+	/** The quest. */
 	@Mocked Quest quest;
 	
+	/**
+	 * Method Knight should embark on quest.
+	 *
+	 * @throws QuestException the quest exception
+	 */
 	@Test
   public void knightShouldEmbarkOnQuest() throws QuestException {
 	  new Expectations() {

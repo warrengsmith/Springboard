@@ -8,7 +8,6 @@
     <constructor-arg ref="quest" /> <!--<co id="co_inject_quest_bean"/>-->       
   </bean>
 
-  <bean id="quest"
-        class="com.springinaction.knights.SeducingPrincessQuest" /><!--<co id="co_quest_bean"/>-->
+  <bean id="quest" class="com.springinaction.knights.MakeRoundTableRounderQuest" />
       
 </beans>
