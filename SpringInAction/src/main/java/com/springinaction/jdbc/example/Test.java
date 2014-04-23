@@ -1,5 +1,7 @@
 package com.springinaction.jdbc.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 /**
  * The Class Test.
  */
@@ -47,4 +49,7 @@ public class Test {
 		this.name = name;
 	}
 
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this);
+	}
 }

@@ -18,6 +18,6 @@ public interface JdbcExample {
 	 * @param id the id
 	 * @return the string
 	 */
-	public String readRow(int id);
+	public Test readRow(int id);
 	
 }

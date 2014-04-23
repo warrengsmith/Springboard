@@ -8,12 +8,12 @@
 	<properties>
 
 		<!-- Generic properties -->
-		<java.version>1.6</java.version>
+		<java.version>1.7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Spring -->
-		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
+		<spring-framework.version>3.2.8.RELEASE</spring-framework.version>
 
 		<!-- Hibernate / JPA > <hibernate.version>4.2.1.Final</hibernate.version -->
 
@@ -69,6 +69,11 @@
 			<version>1.4.177</version>
 		</dependency>
 
+<dependency>
+	<groupId>org.apache.commons</groupId>
+	<artifactId>commons-lang3</artifactId>
+	<version>3.3.2</version>
+</dependency>
 
 		<!-- Test Artifacts -->
 		<dependency>
@@ -89,6 +94,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+				<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 			<version>1.0.0.RELEASE</version>
@@ -104,6 +114,8 @@
 				<configuration>
 					<linkXref>true</linkXref>
 					<sourceEncoding>utf-8</sourceEncoding>
+					<source>1.7</source>
+					<target>1.7</target>
 					<minimumTokens>100</minimumTokens>
 					<targetJdk>1.7</targetJdk>
 					<excludes>

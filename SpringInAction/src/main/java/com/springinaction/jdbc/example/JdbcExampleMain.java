@@ -18,10 +18,10 @@ public class JdbcExampleMain {
 		try {
 		final JdbcExampleDAO jdbcExampleDAO = (JdbcExampleDAO) context.getBean("jdbcExampleDAO");
 		Test test = new Test();
-		test.setId(4);
+		test.setId(5);
 		test.setName("Added");
-		jdbcExampleDAO.insertARow(test);
-//		System.out.println(jdbcExampleDAO.readRow(1));
+//		jdbcExampleDAO.insertARow(test);
+		System.out.println(jdbcExampleDAO.readRow(1));
 		} finally {
 			context.close();
 		}
