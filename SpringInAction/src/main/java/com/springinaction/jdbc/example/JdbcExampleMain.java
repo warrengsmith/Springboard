@@ -21,7 +21,7 @@ public class JdbcExampleMain {
 		test.setId(5);
 		test.setName("Added");
 //		jdbcExampleDAO.insertARow(test);
-		System.out.println(jdbcExampleDAO.readRow(1));
+		System.out.println(jdbcExampleDAO.readRowById(1));
 		} finally {
 			context.close();
 		}

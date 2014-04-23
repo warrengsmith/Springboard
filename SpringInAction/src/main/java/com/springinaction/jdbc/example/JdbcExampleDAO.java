@@ -40,17 +40,17 @@ public class JdbcExampleDAO implements JdbcExample {
 	/* (non-Javadoc)
 	 * @see com.springinaction.jdbc.example.JdbcExample#readRow(int)
 	 */
-	public Test readRow(int id) {
-		return jdbcTemplate.queryForObject(SQL_QUERY_BY_ID, 
-				new ParameterizedRowMapper<Test>() {
+	public Test readRowById(int id) {
+		return jdbcTemplate.queryForObject(SQL_QUERY_BY_ID,
+			new ParameterizedRowMapper<Test>() {
 				public Test mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Test test = new Test();
 					test.setId(rs.getInt(1));
 					test.setName(rs.getString(2));
 					return test;
 				}
-		},		
-		id
+			}, 
+				id
 		);
 	}
 

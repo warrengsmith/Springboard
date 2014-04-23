@@ -13,11 +13,10 @@ public interface JdbcExample {
 	public void insertARow(Test test);
 	
 	/**
-	 * Method Read row.
-	 *
+	 * Method Read row by id.
 	 * @param id the id
-	 * @return the string
+	 * @return Test
 	 */
-	public Test readRow(int id);
+	public Test readRowById(int id);
 	
 }
