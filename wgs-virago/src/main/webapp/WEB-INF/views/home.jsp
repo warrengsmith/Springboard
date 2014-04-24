@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,7 @@
 <body>
 	<br />
 	<br />
-	<div class="container theme-showcase" role="main">
+	<div class="container theme-showcase">
 		<div class="jumbotron">
 			<h1>Hello world!</h1>
 			<p>The time on the server is ${serverTime}.</p>
