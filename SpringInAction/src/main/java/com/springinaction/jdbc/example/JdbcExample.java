@@ -1,5 +1,6 @@
 package com.springinaction.jdbc.example;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface JdbcExample.
  */
@@ -17,6 +18,6 @@ public interface JdbcExample {
 	 * @param id the id
 	 * @return Test
 	 */
-	public Test readRowById(int id);
+	public Test readRowByIdWithRowMapper(int id);
 	
 }
