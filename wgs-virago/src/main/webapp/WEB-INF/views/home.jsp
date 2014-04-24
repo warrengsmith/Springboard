@@ -7,8 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/spacelab/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<br />
@@ -19,7 +18,7 @@
 			<p>The time on the server is ${serverTime}.</p>
 		</div>
 		<div class="page-header">
-			<h1>Created with Spring MVC and Bootstrap!</h1>
+			<h2>Created with Spring MVC and Spacelab Bootstrap!</h2>
 		</div>
 	</div>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
