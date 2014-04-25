@@ -4,20 +4,22 @@ package com.springinaction.jdbc.example;
 /**
  * The Interface JdbcExample.
  */
-public interface JdbcExample {
+public interface JdbcTestDAO {
 
 	/**
-	 * Method Insert a row.
+	 * Insert row.
 	 *
 	 * @param test the test
 	 */
-	public void insertARow(Test test);
+	public void insertRow(JdbcTestVO test);
 	
+
 	/**
-	 * Method Read row by id.
+	 * Read row by id.
+	 *
 	 * @param id the id
-	 * @return Test
+	 * @return the test
 	 */
-	public Test readRowByIdWithRowMapper(int id);
+	public JdbcTestVO readRowById(int id);
 	
 }

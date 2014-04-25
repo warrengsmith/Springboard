@@ -17,11 +17,11 @@ public class JdbcExampleMain {
 		final ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("jdbc-example.xml");
 		try {
 		final JdbcExampleDAO jdbcExampleDAO = (JdbcExampleDAO) context.getBean("jdbcExampleDAO");
-		Test test = new Test();
-		test.setId(3);
+		JdbcTestVO test = new JdbcTestVO();
+		test.setId(7);
 		test.setName("Alexei Sayle");
-		jdbcExampleDAO.insertARow(test);
-		System.out.println(jdbcExampleDAO.readRowByIdWithRowMapper(10));
+		jdbcExampleDAO.insertRow(test);
+		System.out.println(jdbcExampleDAO.readRowById(7));
 		} finally {
 			context.close();
 		}

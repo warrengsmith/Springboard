@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * The Class Test.
  */
-public class Test {
+public class JdbcTestVO {
 
 	/** The id. */
 	private int id;
