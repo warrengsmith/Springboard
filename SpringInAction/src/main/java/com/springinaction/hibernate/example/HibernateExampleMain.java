@@ -13,7 +13,7 @@ public class HibernateExampleMain {
 		hibernateTestVO.setId(6);
 		hibernateTestVO.setName("Kirk Nelson");
 		hibernateTestDAO.insertRow(hibernateTestVO);
-		System.out.println(hibernateTestDAO.readRowById(6));
+//		System.out.println(hibernateTestDAO.readRowById(6));
 		} finally {
 			context.close();
 		}

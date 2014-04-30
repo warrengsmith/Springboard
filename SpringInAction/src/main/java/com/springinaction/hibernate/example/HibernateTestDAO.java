@@ -25,22 +25,22 @@ public class HibernateTestDAO implements HibernateExampleDAO {
 	// sFactory.getCurrentSession().delete(testHibernate);
 	// }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.springinaction.hibernate.example.HibernateExampleDAO#readRowById(int)
-	 */
-	public HibernateTestVO readRowById(int id) {
-		String hql = "FROM Test WHERE tx = :id";
-		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("id", id);
-		List<HibernateTestVO> results = query.list();
-		if (results.size() > 0) {
-			return results.get(0);
-		}
-		return null;
-	}
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see
+//	 * com.springinaction.hibernate.example.HibernateExampleDAO#readRowById(int)
+//	 */
+//	public HibernateTestVO readRowById(int id) {
+//		String hql = "FROM Test WHERE tx = :id";
+//		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
+//		query.setParameter("id", id);
+//		List<HibernateTestVO> results = query.list();
+//		if (results.size() > 0) {
+//			return results.get(0);
+//		}
+//		return null;
+//	}
 
 	/*
 	 * (non-Javadoc)
