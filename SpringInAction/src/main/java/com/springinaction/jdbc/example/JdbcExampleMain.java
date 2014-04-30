@@ -18,7 +18,7 @@ public class JdbcExampleMain {
 		try {
 		final JdbcExampleDAO jdbcExampleDAO = (JdbcExampleDAO) context.getBean("jdbcExampleDAO");
 		JdbcTestVO test = new JdbcTestVO();
-		test.setId(7);
+		test.setId(81);
 		test.setName("Alexei Sayle");
 		jdbcExampleDAO.insertRow(test);
 		System.out.println(jdbcExampleDAO.readRowById(7));

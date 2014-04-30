@@ -15,7 +15,7 @@ public class HibernateTestDAO implements HibernateExampleDAO {
 
 	/** The s factory. */
 	@Autowired
-	SessionFactory sFactory;
+	SessionFactory sessionFactory;
 
 	// public void update(HibernateTestVO testHibernate) {
 	// sFactory.getCurrentSession().update(testHibernate);
@@ -33,7 +33,7 @@ public class HibernateTestDAO implements HibernateExampleDAO {
 	 */
 	public HibernateTestVO readRowById(int id) {
 		String hql = "FROM Test WHERE tx = :id";
-		Query query = (Query) sFactory.getCurrentSession().createQuery(hql);
+		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("id", id);
 		List<HibernateTestVO> results = query.list();
 		if (results.size() > 0) {
@@ -50,7 +50,7 @@ public class HibernateTestDAO implements HibernateExampleDAO {
 	 * .springinaction.hibernate.example.HibernateTestVO)
 	 */
 	public void insertRow(HibernateTestVO hibernateTestVO) {
-		sFactory.getCurrentSession().save(hibernateTestVO);
+		sessionFactory.getCurrentSession().save(hibernateTestVO);
 	}
 
 	// public List<TestHibernate> getAllTestHibernates() {
