@@ -5,6 +5,8 @@ import com.hibernate.example.model.TestVO;
 /**
  * The Interface IHibernateDAO.
  */
-public interface IHibernateDAO extends IOperations<TestVO> {
+public interface IHibernateDAO {
 
+	public void insertRow(TestVO test);
+	
 }

@@ -15,8 +15,8 @@ public class HibernateExampleMain {
 		TestVO testVO = new TestVO();
 		testVO.setId(7);
 		testVO.setName("Kirk Nelson");
-		hibernateDAO.create(testVO);
-		System.out.println(hibernateDAO.findOne(7));
+		hibernateDAO.insertRow(testVO);
+//		System.out.println(hibernateDAO.findOne(7));
 		} finally {
 			context.close();
 		}

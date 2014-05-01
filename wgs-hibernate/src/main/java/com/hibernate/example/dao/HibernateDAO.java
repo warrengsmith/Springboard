@@ -1,21 +1,21 @@
 package com.hibernate.example.dao;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hibernate.example.model.TestVO;
 
-/**
- * The Class HibernateDAO.
- */
 @Repository
-public class HibernateDAO extends AbstractHibernateDAO<TestVO> implements IHibernateDAO {
+public class HibernateDAO implements IHibernateDAO {
 
-	    /**
-    	 * Constructor instantiates a new hibernate dao.
-    	 */
-    	public HibernateDAO() {
-	        super();
-	        setClazz(TestVO.class);
-	    }
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	@Override
+	public void insertRow(TestVO test) {
+		sessionFactory.getCurrentSession().save(test);
 	}
+	
+}
 	
