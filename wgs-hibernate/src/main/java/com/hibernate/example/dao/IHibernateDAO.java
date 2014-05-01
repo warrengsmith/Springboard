@@ -9,4 +9,6 @@ public interface IHibernateDAO {
 
 	public void insertRow(TestVO test);
 	
+	public TestVO readRowById(int id);
+	
 }

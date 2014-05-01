@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hibernate</groupId>
-	<artifactId>spring-hibernate3</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<artifactId>spring-hibernate4</artifactId>
+	<version>2.11.Final</version>
 
 	<properties>
 		<org.springframework.version>4.0.3.RELEASE</org.springframework.version>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.5.Final</version>
+			<version>4.2.11.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.javassist</groupId>

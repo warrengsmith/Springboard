@@ -4,7 +4,7 @@ public interface HibernateExampleDAO {
 
 	public void insertRow(HibernateTestVO test);
 
-//	public HibernateTestVO readRowById(int id);
+	public HibernateTestVO readRowById(int id);
 	
 	
 }
