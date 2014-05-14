@@ -91,11 +91,11 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 				.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE like ?", new Object[] {searchArg}, 
 						new ResultSetExtractor<List<Book>>() {
 							@Override
-							public List<Book> extractData(ResultSet resultSet)
+							public List<Book> extractData(final ResultSet resultSet)
 									throws SQLException, DataAccessException {
-								List<Book> results = new ArrayList<Book>();
+								final List<Book> results = new ArrayList<Book>();
 								while (resultSet.next()) {
-									Book book = new Book();
+									final Book book = new Book();
 									book.setId(resultSet.getInt(1));
 									book.setTitle(resultSet.getString(2));
 									book.setPrice(resultSet.getBigDecimal(3));
