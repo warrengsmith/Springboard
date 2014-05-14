@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.usg.ssg1.common.dao.BookDAO;
 import com.usg.ssg1.common.dto.Book;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JdbcTemplateBookDAOImpl.
  * @author Warren Smith
@@ -56,6 +57,31 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 	    }
 	}
 	
+	/**
+	 * The Class BookListExtractor.
+	 */
+	private static final class BookListExtractor implements ResultSetExtractor<List<Book>> {
+
+		/* (non-Javadoc)
+		 * @see org.springframework.jdbc.core.ResultSetExtractor#extractData(java.sql.ResultSet)
+		 */
+		@Override
+		public List<Book> extractData(final ResultSet resultSet) throws SQLException,
+				DataAccessException {
+			final List<Book> results = new ArrayList<Book>();
+			while (resultSet.next()) {
+				final Book book = new Book(); // NOPMD by kahwgs on 5/14/14 10:08 AM
+				book.setId(resultSet.getInt(1));
+				book.setTitle(resultSet.getString(2));
+				book.setPrice(resultSet.getBigDecimal(3));
+				book.setDescription(resultSet.getString(4));
+				book.setAuthor(resultSet.getString(5));
+				results.add(book);
+			}
+			return results;
+		}
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.usg.ssg1.common.dao.BookDAO#findAllBooks()
 	 */
@@ -89,22 +115,6 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 				.append(titleSubString.trim()).append('%').toString();
 		return jdbcTemplate
 				.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE like ?", new Object[] {searchArg}, 
-						new ResultSetExtractor<List<Book>>() {
-							@Override
-							public List<Book> extractData(final ResultSet resultSet)
-									throws SQLException, DataAccessException {
-								final List<Book> results = new ArrayList<Book>();
-								while (resultSet.next()) {
-									final Book book = new Book();
-									book.setId(resultSet.getInt(1));
-									book.setTitle(resultSet.getString(2));
-									book.setPrice(resultSet.getBigDecimal(3));
-									book.setDescription(resultSet.getString(4));
-									book.setAuthor(resultSet.getString(5));
-									results.add(book);
-								}
-								return results;
-							}
-						});
+						new BookListExtractor());
 	}
 }
