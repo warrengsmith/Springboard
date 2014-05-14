@@ -2,12 +2,15 @@ package com.wgs.virago.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.usg.ssg1.common.dao.BookDAO;
@@ -82,7 +85,26 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 	 */
 	@Override
 	public List<Book> searchByTitle(final String titleSubString) {
-		final String searchArg = new StringBuilder().append('%').append(titleSubString.trim()).append('%').toString();
-		return jdbcTemplate.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE like ?", new Object[] {searchArg}, new BookMapper());
+		final String searchArg = new StringBuilder().append('%')
+				.append(titleSubString.trim()).append('%').toString();
+		return jdbcTemplate
+				.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE like ?", new Object[] {searchArg}, 
+						new ResultSetExtractor<List<Book>>() {
+							@Override
+							public List<Book> extractData(ResultSet resultSet)
+									throws SQLException, DataAccessException {
+								List<Book> results = new ArrayList<Book>();
+								while (resultSet.next()) {
+									Book book = new Book();
+									book.setId(resultSet.getInt(1));
+									book.setTitle(resultSet.getString(2));
+									book.setPrice(resultSet.getBigDecimal(3));
+									book.setDescription(resultSet.getString(4));
+									book.setAuthor(resultSet.getString(5));
+									results.add(book);
+								}
+								return results;
+							}
+						});
 	}
 }
