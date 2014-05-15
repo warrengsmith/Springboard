@@ -9,36 +9,30 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import com.usg.ssg1.common.dao.BookDAO;
 import com.usg.ssg1.common.dto.Book;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JdbcTemplateBookDAOImpl.
  * @author Warren Smith
  * @version 1.0
  */
-public class JdbcTemplateBookDAOImpl implements BookDAO {
+@Repository
+public class JdbcTemplateBookDAOImpl extends NamedParameterJdbcDaoSupport implements BookDAO {
 
-    /** The jdbc template. */
-	private transient JdbcTemplate jdbcTemplate;
+	@Autowired
+	public JdbcTemplateBookDAOImpl(DataSource dataSource) {
+		this.setDataSource(dataSource);
+	}
 	
 	/**
-     * Sets the data source.
-     *
-     * @param dataSource the new data source
-     */
-    @Autowired
-    public void setDataSource(final DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-	
-	/**
-	 * The Class BookMapper.
+	 * The Class BookMapper. Demonstrate row mapping using column names.
 	 */
 	private static final class BookMapper implements RowMapper<Book> {
 	    
@@ -48,17 +42,17 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 		@Override
     	public Book mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
 	        final Book book = new Book();
-	        book.setId(resultSet.getInt(1));
-	        book.setTitle(resultSet.getString(2));
-	        book.setPrice(resultSet.getBigDecimal(3));
-	        book.setDescription(resultSet.getString(4));
-	        book.setAuthor(resultSet.getString(5));
+	        book.setId(resultSet.getInt("BOOK_ID"));
+	        book.setTitle(resultSet.getString("TITLE"));
+	        book.setPrice(resultSet.getBigDecimal("PRICE"));
+	        book.setDescription(resultSet.getString("DESCRIPTION"));
+	        book.setAuthor(resultSet.getString("AUTHOR"));
 	        return book;
 	    }
 	}
 	
 	/**
-	 * The Class BookListExtractor.
+	 * The Class BookListExtractor. Demonstrate ResultSetExtractor using column numbers.
 	 */
 	private static final class BookListExtractor implements ResultSetExtractor<List<Book>> {
 
@@ -87,7 +81,7 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 	 */
 	@Override
 	public List<Book> findAllBooks() {
-		return jdbcTemplate.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK", new BookMapper());
+		return getJdbcTemplate().query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK", new BookMapper());
 	}
 
 	/* (non-Javadoc)
@@ -95,7 +89,7 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 	 */
 	@Override
 	public Book findBookById(final int bookId) {
-		return jdbcTemplate.queryForObject("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where BOOK_ID = ?", new Object[] {bookId}, new BookMapper());
+		return getNamedParameterJdbcTemplate().queryForObject("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where BOOK_ID = :BOOK_ID", new MapSqlParameterSource("BOOK_ID", bookId), new BookMapper());
 	}
 
 	/* (non-Javadoc)
@@ -103,7 +97,7 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 	 */
 	@Override
 	public Book findBookByTitle(final String title) {
-		return jdbcTemplate.queryForObject("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE = ?", new Object[] {title}, new BookMapper());
+		return getNamedParameterJdbcTemplate().queryForObject("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE = :TITLE", new MapSqlParameterSource("TITLE", title), new BookMapper());
 	}
 
 	/* (non-Javadoc)
@@ -113,8 +107,8 @@ public class JdbcTemplateBookDAOImpl implements BookDAO {
 	public List<Book> searchByTitle(final String titleSubString) {
 		final String searchArg = new StringBuilder().append('%')
 				.append(titleSubString.trim()).append('%').toString();
-		return jdbcTemplate
-				.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE like ?", new Object[] {searchArg}, 
+		return getNamedParameterJdbcTemplate()
+				.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK where TITLE like :SEARCH_ARG", new MapSqlParameterSource("SEARCH_ARG", searchArg), 
 						new BookListExtractor());
 	}
 }

@@ -1,6 +1,14 @@
 package com.wgs.virago.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.usg.ssg1.common.dao.UserDAO;
 import com.usg.ssg1.common.dto.User;
@@ -12,6 +20,19 @@ import com.usg.ssg1.common.dto.User;
  */
 public class JdbcTemplateUserDAOImpl implements UserDAO {
 
+    /** The jdbc template. */
+	private transient JdbcTemplate jdbcTemplate;
+	
+	/**
+     * Sets the data source.
+     *
+     * @param dataSource the new data source
+     */
+    @Autowired
+    public void setDataSource(final DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+	
 	/* (non-Javadoc)
 	 * @see com.usg.ssg1.common.dao.UserDAO#addUser(java.lang.String)
 	 */
@@ -44,8 +65,7 @@ public class JdbcTemplateUserDAOImpl implements UserDAO {
 	 */
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("select BOOK_ID, TITLE, PRICE, DESCRIPTION, AUTHOR from BOOK", new UserMapper());
 	}
 
 	/* (non-Javadoc)
@@ -66,4 +86,20 @@ public class JdbcTemplateUserDAOImpl implements UserDAO {
 		return null;
 	}
 
+	/**
+	 * The Class UserMapper.
+	 */
+	private static final class UserMapper implements RowMapper<User> {
+	    
+    	/* (non-Javadoc)
+    	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
+    	 */
+		@Override
+    	public User mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
+	        final User user = new User();
+	        user.setId(resultSet.getInt(1));
+	        user.setName(resultSet.getString(2));
+	        return user;
+	    }
+	}
 }
