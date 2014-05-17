@@ -3,6 +3,7 @@ package com.wgs.example;
 /**
  * The Class Manipulator.
  * @author Warren Smith
+ * @version 1.0
  */
 public class Manipulator {
 

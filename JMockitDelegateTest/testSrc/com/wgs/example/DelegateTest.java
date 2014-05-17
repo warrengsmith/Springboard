@@ -9,6 +9,7 @@ import org.junit.Test;
 /**
  * The Class DelegateTest.
  * @author Warren Smith
+ * @version 1.0
  */
 public class DelegateTest {
 

@@ -3,6 +3,7 @@ package com.wgs.example;
 /**
  * The Class ClassUnderTest.
  * @author Warren Smith
+ * @version 1.0S
  */
 public class ClassUnderTest {
 
