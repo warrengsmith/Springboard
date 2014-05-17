@@ -25,7 +25,7 @@ public class MockUpTest {
 		 * @param string the string
 		 */
 		@Mock
-		public void manipulate(String string){
+		public void manipulate(final String string){
 			assertEquals("test2",string);
 			System.out.println("In MockStaticManipulator - " + string);
 		}
@@ -38,7 +38,7 @@ public class MockUpTest {
 	@Test
 	public void testExecuteWithNoMockImplemented() {
 		// Instantiate the class under test and execute the code.
-		ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
+		final ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
 		classUnderTest2.execute("test1");
 	}
 	
@@ -51,7 +51,7 @@ public class MockUpTest {
 		new MockStaticManipulator();
 		
 		// Instantiate the class under test and execute the code.
-		ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
+		final ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
 		classUnderTest2.execute("test2");
 	}
 	
@@ -69,14 +69,14 @@ public class MockUpTest {
 			 * @param string the string
 			 */
 			@Mock
-			public void manipulate(String string){
+			public void manipulate(final String string){
 				assertEquals("test3",string);
 				System.out.println("In InLineAnonymousMockStaticManipulator - " + string);
 			}
 		};
 		
 		// Instantiate the class under test and execute the code
-		ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
+		final ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
 		classUnderTest2.execute("test3");
 	}
 

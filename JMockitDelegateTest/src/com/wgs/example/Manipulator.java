@@ -13,7 +13,7 @@ public class Manipulator {
 	 * @param string the string
 	 * @return the string
 	 */
-	public String manipulate(String string) {
+	public String manipulate(final String string) {
 		return "Normal Execution - " + string;
 	}
 }

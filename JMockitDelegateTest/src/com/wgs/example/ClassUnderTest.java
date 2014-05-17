@@ -12,8 +12,8 @@ public class ClassUnderTest {
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String[] args) {
-		ClassUnderTest classUnderTest = new ClassUnderTest();
+	public static void main(final String[] args) {
+		final ClassUnderTest classUnderTest = new ClassUnderTest();
 		classUnderTest.execute("test");
 	}
 
@@ -22,8 +22,8 @@ public class ClassUnderTest {
 	 *
 	 * @param string the string
 	 */
-	public void execute(String string) {
-		Manipulator manipulator = new Manipulator();
+	public void execute(final String string) {
+		final Manipulator manipulator = new Manipulator();
 		System.out.println(manipulator.manipulate(string));
 	}
 }

@@ -14,8 +14,8 @@ public class ClassUnderTest2 {
 	 * @param args
 	 *            the arguments
 	 */
-	public static void main(String[] args) {
-		ClassUnderTest2 classUnderTest = new ClassUnderTest2();
+	public static void main(final String[] args) {
+		final ClassUnderTest2 classUnderTest = new ClassUnderTest2();
 		classUnderTest.execute("test");
 	}
 
@@ -25,7 +25,7 @@ public class ClassUnderTest2 {
 	 * @param string
 	 *            the string
 	 */
-	public void execute(String string) {
+	public void execute(final String string) {
 		StaticManipulator.manipulate(string);
 		System.out.println("Back in execute()");
 	}

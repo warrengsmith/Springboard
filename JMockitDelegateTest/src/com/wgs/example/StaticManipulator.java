@@ -19,7 +19,7 @@ public final class StaticManipulator {
 	 *
 	 * @param string the string
 	 */
-	public static void manipulate(String string) {
+	public static void manipulate(final String string) {
 		System.out.println("In StaticManipulator - " + string);
 	}
 }

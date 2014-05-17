@@ -26,13 +26,13 @@ public class DelegateTest {
 				manipulator.manipulate(anyString);
 				result = new Delegate() {
 					@SuppressWarnings("unused")
-					String delegateManipulate(String string) {
+					String delegateManipulate(final String string) {
 						return "Delegated - " + string;
 					}
 				};
 			}
 		};
-	ClassUnderTest classUnderTest = new ClassUnderTest();
+	final ClassUnderTest classUnderTest = new ClassUnderTest();
 	classUnderTest.execute("test");
 	}
 }
