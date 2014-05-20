@@ -7,11 +7,11 @@ import mockit.Mocked;
 import org.junit.Test;
 
 /**
- * The Class DelegateTest.
+ * The Class TestClassUsingPublicConcreteImplementationWithJMockitDelegate.
  * @author Warren Smith
  * @version 1.0
  */
-public class DelegateTest {
+public class TestClassUsingPublicConcreteImplementationWithJMockitDelegate {
 
 	/**
 	 * Test execute delegate.
@@ -23,7 +23,7 @@ public class DelegateTest {
 		new Expectations() {
 			{
 				new Manipulator();
-				manipulator.manipulate(anyString);
+				manipulator.manipulate("ClassUsingPublicConcreteImplentationDelegateTest");
 				result = new Delegate() {
 					@SuppressWarnings("unused")
 					String delegateManipulate(final String string) {
@@ -32,7 +32,7 @@ public class DelegateTest {
 				};
 			}
 		};
-	final ClassUnderTest classUnderTest = new ClassUnderTest();
-	classUnderTest.execute("test");
+	final ClassUsingPublicConcreteImplentation classUnderTest = new ClassUsingPublicConcreteImplentation();
+	classUnderTest.execute("ClassUsingPublicConcreteImplentationDelegateTest");
 	}
 }

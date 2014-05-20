@@ -1,12 +1,11 @@
 package com.wgs.example;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ClassUnderTest2.
+ * The ClassUsingStaticMethodImplementation.
  * @author Warren Smith
  * @version 1.0
  */
-public class ClassUnderTest2 {
+public class ClassUsingStaticMethodImplementation {
 
 	/**
 	 * The main method.
@@ -15,8 +14,8 @@ public class ClassUnderTest2 {
 	 *            the arguments
 	 */
 	public static void main(final String[] args) {
-		final ClassUnderTest2 classUnderTest = new ClassUnderTest2();
-		classUnderTest.execute("test");
+		final ClassUsingStaticMethodImplementation classUnderTest = new ClassUsingStaticMethodImplementation();
+		classUnderTest.execute("ClassUsingStaticMethodImplementation");
 	}
 
 	/**
@@ -29,5 +28,4 @@ public class ClassUnderTest2 {
 		StaticManipulator.manipulate(string);
 		System.out.println("Back in execute()");
 	}
-
 }

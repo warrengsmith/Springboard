@@ -1,17 +1,17 @@
 package com.wgs.example;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import mockit.Mock;
 import mockit.MockUp;
 
 import org.junit.Test;
 
 /**
- * The Class MockUpTest.
+ * The Class TestClassUsingStaticMethodImplementationWithJMockitMockUp.
  * @author Warren Smith
  * @version 1.0
  */
-public class MockUpTest {
+public class TestClassUsingStaticMethodImplementationWithJMockitMockUp {
 
 	/**
 	 * The Class MockStaticManipulator. This class could be top-level. 
@@ -26,7 +26,7 @@ public class MockUpTest {
 		 */
 		@Mock
 		public void manipulate(final String string){
-			assertEquals("test2",string);
+			assertEquals("testExecuteWithMockStaticManipulator",string);
 			System.out.println("In MockStaticManipulator - " + string);
 		}
 	}
@@ -38,8 +38,8 @@ public class MockUpTest {
 	@Test
 	public void testExecuteWithNoMockImplemented() {
 		// Instantiate the class under test and execute the code.
-		final ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
-		classUnderTest2.execute("test1");
+		final ClassUsingStaticMethodImplementation classUsingStaticMethodImplementation = new ClassUsingStaticMethodImplementation();
+		classUsingStaticMethodImplementation.execute("ClassUsingPublicConcreteImplentation");
 	}
 	
 	/**
@@ -51,8 +51,8 @@ public class MockUpTest {
 		new MockStaticManipulator();
 		
 		// Instantiate the class under test and execute the code.
-		final ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
-		classUnderTest2.execute("test2");
+		final ClassUsingStaticMethodImplementation classUsingStaticMethodImplementation = new ClassUsingStaticMethodImplementation();
+		classUsingStaticMethodImplementation.execute("testExecuteWithMockStaticManipulator");
 	}
 	
 	/**
@@ -70,14 +70,14 @@ public class MockUpTest {
 			 */
 			@Mock
 			public void manipulate(final String string){
-				assertEquals("test3",string);
+				assertEquals("testExecuteWithMockStaticManipulatorInLineAnonymousMockUp",string);
 				System.out.println("In InLineAnonymousMockStaticManipulator - " + string);
 			}
 		};
 		
 		// Instantiate the class under test and execute the code
-		final ClassUnderTest2 classUnderTest2 = new ClassUnderTest2();
-		classUnderTest2.execute("test3");
+		final ClassUsingStaticMethodImplementation classUsingStaticMethodImplementation = new ClassUsingStaticMethodImplementation();
+		classUsingStaticMethodImplementation.execute("testExecuteWithMockStaticManipulatorInLineAnonymousMockUp");
 	}
 
 }

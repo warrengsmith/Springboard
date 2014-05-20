@@ -1,11 +1,11 @@
 package com.wgs.example;
 
 /**
- * The Class ClassUnderTest.
+ * The ClassUsingPublicConcreteImplentation.
  * @author Warren Smith
- * @version 1.0S
+ * @version 1.0
  */
-public class ClassUnderTest {
+public class ClassUsingPublicConcreteImplentation {
 
 	/**
 	 * The main method.
@@ -13,8 +13,8 @@ public class ClassUnderTest {
 	 * @param args the arguments
 	 */
 	public static void main(final String[] args) {
-		final ClassUnderTest classUnderTest = new ClassUnderTest();
-		classUnderTest.execute("test");
+		final ClassUsingPublicConcreteImplentation classUnderTest = new ClassUsingPublicConcreteImplentation();
+		classUnderTest.execute("ClassUsingPublicConcreteImplentation");
 	}
 
 	/**
