@@ -1,10 +1,13 @@
-package com.wgs.example;
+package com.wgs.example.statik;
 
 import static org.junit.Assert.assertEquals;
 import mockit.Mock;
 import mockit.MockUp;
 
 import org.junit.Test;
+
+import com.wgs.example.statik.ClassUsingStaticMethodImplementation;
+import com.wgs.example.statik.StaticManipulator;
 
 /**
  * The Class TestClassUsingStaticMethodImplementationWithJMockitMockUp.
@@ -39,7 +42,7 @@ public class TestClassUsingStaticMethodImplementationWithJMockitMockUp {
 	public void testExecuteWithNoMockImplemented() {
 		// Instantiate the class under test and execute the code.
 		final ClassUsingStaticMethodImplementation classUsingStaticMethodImplementation = new ClassUsingStaticMethodImplementation();
-		classUsingStaticMethodImplementation.execute("ClassUsingPublicConcreteImplentation");
+		classUsingStaticMethodImplementation.execute("ClassUsingPublicConcreteImplementation");
 	}
 	
 	/**

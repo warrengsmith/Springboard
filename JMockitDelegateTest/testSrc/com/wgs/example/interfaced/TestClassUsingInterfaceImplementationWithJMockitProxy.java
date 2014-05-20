@@ -1,10 +1,13 @@
-package com.wgs.example;
+package com.wgs.example.interfaced;
 
 import static org.junit.Assert.assertEquals;
 import mockit.Mock;
 import mockit.MockUp;
 
 import org.junit.Test;
+
+import com.wgs.example.interfaced.ClassUsingInterfaceImplementation;
+import com.wgs.example.interfaced.IManipulator;
 
 /**
  * The Class TestClassUsingInterfaceImplementationWithJMockitProxy.

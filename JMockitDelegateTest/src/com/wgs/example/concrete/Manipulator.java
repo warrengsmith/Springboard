@@ -1,4 +1,4 @@
-package com.wgs.example;
+package com.wgs.example.concrete;
 
 /**
  * The Class Manipulator.

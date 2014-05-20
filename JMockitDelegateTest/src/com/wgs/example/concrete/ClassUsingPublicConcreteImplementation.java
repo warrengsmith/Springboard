@@ -1,11 +1,12 @@
-package com.wgs.example;
+package com.wgs.example.concrete;
+
 
 /**
- * The ClassUsingPublicConcreteImplentation.
+ * The ClassUsingPublicConcreteImplementation.
  * @author Warren Smith
  * @version 1.0
  */
-public class ClassUsingPublicConcreteImplentation {
+public class ClassUsingPublicConcreteImplementation {
 
 	/**
 	 * The main method.
@@ -13,8 +14,8 @@ public class ClassUsingPublicConcreteImplentation {
 	 * @param args the arguments
 	 */
 	public static void main(final String[] args) {
-		final ClassUsingPublicConcreteImplentation classUnderTest = new ClassUsingPublicConcreteImplentation();
-		classUnderTest.execute("ClassUsingPublicConcreteImplentation");
+		final ClassUsingPublicConcreteImplementation classUnderTest = new ClassUsingPublicConcreteImplementation();
+		classUnderTest.execute("ClassUsingPublicConcreteImplementation");
 	}
 
 	/**

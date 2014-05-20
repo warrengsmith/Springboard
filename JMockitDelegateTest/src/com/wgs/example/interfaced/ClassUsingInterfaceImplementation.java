@@ -1,4 +1,5 @@
-package com.wgs.example;
+package com.wgs.example.interfaced;
+
 
 // TODO: Auto-generated Javadoc
 /**

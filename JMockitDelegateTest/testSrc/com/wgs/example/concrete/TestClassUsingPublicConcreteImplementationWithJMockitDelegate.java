@@ -1,10 +1,13 @@
-package com.wgs.example;
+package com.wgs.example.concrete;
 
 import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
 
 import org.junit.Test;
+
+import com.wgs.example.concrete.ClassUsingPublicConcreteImplementation;
+import com.wgs.example.concrete.Manipulator;
 
 /**
  * The Class TestClassUsingPublicConcreteImplementationWithJMockitDelegate.
@@ -32,7 +35,7 @@ public class TestClassUsingPublicConcreteImplementationWithJMockitDelegate {
 				};
 			}
 		};
-	final ClassUsingPublicConcreteImplentation classUnderTest = new ClassUsingPublicConcreteImplentation();
+	final ClassUsingPublicConcreteImplementation classUnderTest = new ClassUsingPublicConcreteImplementation();
 	classUnderTest.execute("ClassUsingPublicConcreteImplentationDelegateTest");
 	}
 }
