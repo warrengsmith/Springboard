@@ -27,7 +27,8 @@ import com.usg.ssg1.common.dto.Book;
 public class JdbcTemplateBookDAOImpl extends NamedParameterJdbcDaoSupport implements BookDAO {
 
 	@Autowired
-	public JdbcTemplateBookDAOImpl(DataSource dataSource) {
+	public JdbcTemplateBookDAOImpl(final DataSource dataSource) {
+		super();
 		this.setDataSource(dataSource);
 	}
 	
@@ -51,13 +52,14 @@ public class JdbcTemplateBookDAOImpl extends NamedParameterJdbcDaoSupport implem
 	    }
 	}
 	
-	/**
-	 * The Class BookListExtractor. Demonstrate ResultSetExtractor using column numbers.
+	/** 
+	 * The Class BookListExtractor. 
+	 * Demonstrate ResultSetExtractor using column numbers.  
 	 */
 	private static final class BookListExtractor implements ResultSetExtractor<List<Book>> {
 
 		/* (non-Javadoc)
-		 * @see org.springframework.jdbc.core.ResultSetExtractor#extractData(java.sql.ResultSet)
+		 * @see org.springframework.jdbc.core.ResultSetExtractor#extractData(java.sql.ResultSet) // NOPMD by kahwgs on 5/22/14 12:36 PM
 		 */
 		@Override
 		public List<Book> extractData(final ResultSet resultSet) throws SQLException,
