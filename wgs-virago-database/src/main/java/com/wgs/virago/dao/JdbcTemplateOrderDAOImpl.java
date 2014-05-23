@@ -42,14 +42,13 @@ public class JdbcTemplateOrderDAOImpl extends NamedParameterJdbcDaoSupport imple
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet,
-		 * int)
+		 * org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet,  int)
 		 */
 		public OrderDetail mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
 			final OrderDetail orderDetail = new OrderDetail();
-			orderDetail.setId(resultSet.getInt(1));
-			orderDetail.setOrderId(resultSet.getInt(2));
-			orderDetail.setBookId(resultSet.getInt(3));
+			orderDetail.setId(resultSet.getInt("ORDER_DTL_ID"));
+			orderDetail.setOrderId(resultSet.getInt("ORDER_ID"));
+			orderDetail.setBookId(resultSet.getInt("BOOK_ID"));
 			return orderDetail;
 		}
 	}
@@ -68,10 +67,10 @@ public class JdbcTemplateOrderDAOImpl extends NamedParameterJdbcDaoSupport imple
 		 */
 		public Order mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
 			final Order order = new Order();
-			order.setId(resultSet.getInt(1));
-			order.setUserId(resultSet.getInt(2));
-			order.setPaymentTypeId(resultSet.getInt(3));
-			order.setTimestamp(resultSet.getTimestamp(4));
+			order.setId(resultSet.getInt("ORDER_ID"));
+			order.setUserId(resultSet.getInt("USER_ID"));
+			order.setPaymentTypeId(resultSet.getInt("PYMT_TYPE_ID"));
+			order.setTimestamp(resultSet.getTimestamp("ORDER_TS"));
 			return order;
 		}
 	}
@@ -90,8 +89,8 @@ public class JdbcTemplateOrderDAOImpl extends NamedParameterJdbcDaoSupport imple
 		 */
 		public PaymentType mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
 			final PaymentType paymentType = new PaymentType();
-			paymentType.setId(resultSet.getInt(1));
-			paymentType.setName(resultSet.getString(2));
+			paymentType.setId(resultSet.getInt("PYMT_TYPE_ID"));
+			paymentType.setName(resultSet.getString("PYMT_TYPE_NM"));
 			return paymentType;
 		}
 	}
@@ -115,17 +114,17 @@ public class JdbcTemplateOrderDAOImpl extends NamedParameterJdbcDaoSupport imple
 	 */
 	@Override
 	public Order addOrder(final int userId, final int paymentTypeId) {
-		final Order returnOrder = new Order();
-		returnOrder.setUserId(userId);
-		returnOrder.setPaymentTypeId(paymentTypeId);
+		final Order order = new Order();
+		order.setUserId(userId);
+		order.setPaymentTypeId(paymentTypeId);
 		final Timestamp timestamp = new Timestamp(new Date().getTime());
-		returnOrder.setTimestamp(timestamp);
+		order.setTimestamp(timestamp);
 		final KeyHolder keyHolder = new GeneratedKeyHolder();
-		final SqlParameterSource parameters = new BeanPropertySqlParameterSource(returnOrder);
+		final SqlParameterSource parameters = new BeanPropertySqlParameterSource(order);
 		getNamedParameterJdbcTemplate().update("insert into SSG1_ORDER(USER_ID, PYMT_TYPE_ID, ORDER_TS) values(:userId, :paymentTypeId, :timestamp)", // NOPMD by kahwgs on 5/22/14 9:31 AM
 				parameters, keyHolder);
-		returnOrder.setId((Integer) keyHolder.getKey());
-		return returnOrder;
+		order.setId((Integer) keyHolder.getKey());
+		return order;
 	}
 
 	/*
@@ -135,14 +134,14 @@ public class JdbcTemplateOrderDAOImpl extends NamedParameterJdbcDaoSupport imple
 	 */
 	@Override
 	public OrderDetail addOrderDetail(final int orderId, final int bookId) {
-		final OrderDetail returnOrderDetail = new OrderDetail();
-		returnOrderDetail.setOrderId(orderId);
-		returnOrderDetail.setBookId(bookId);
-		final SqlParameterSource parameters = new BeanPropertySqlParameterSource(returnOrderDetail);
+		final OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrderId(orderId);
+		orderDetail.setBookId(bookId);
+		final SqlParameterSource parameters = new BeanPropertySqlParameterSource(orderDetail);
 		final KeyHolder keyHolder = new GeneratedKeyHolder();
 		getNamedParameterJdbcTemplate().update("insert into SSG1_ORDER_DTL(ORDER_ID, BOOK_ID) values(:orderId, :bookId)", parameters, keyHolder); // NOPMD by kahwgs on 5/22/14 9:31 AM
-		returnOrderDetail.setId((Integer) keyHolder.getKey());
-		return returnOrderDetail;
+		orderDetail.setId((Integer) keyHolder.getKey());
+		return orderDetail;
 	}
 
 	/*
@@ -193,14 +192,14 @@ public class JdbcTemplateOrderDAOImpl extends NamedParameterJdbcDaoSupport imple
 	 */
 	@Override
 	public PaymentType findPaymentTypeById(final int paymentTypeId) {
-		PaymentType result = null;
+		PaymentType paymentType = null;
 		try {
-			result = getNamedParameterJdbcTemplate().queryForObject("select PYMT_TYPE_ID, PYMT_TYPE_NM from PYMT_TYPE where PYMT_TYPE_ID = :paymentTypeId",
+			paymentType = getNamedParameterJdbcTemplate().queryForObject("select PYMT_TYPE_ID, PYMT_TYPE_NM from PYMT_TYPE where PYMT_TYPE_ID = :paymentTypeId",
 					new MapSqlParameterSource("paymentTypeId", paymentTypeId), new PaymentTypeMapper());
 		} catch (DataAccessException e) { // NOPMD by kahwgs on 5/22/14 9:25 AM
 			// do nothing
 		}
-		return result;
+		return paymentType;
 	}
 
 	/*
