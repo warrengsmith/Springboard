@@ -40,7 +40,7 @@
 			<version>1.4.177</version>
 		</dependency>
 
-		<!-- Dependent projects >
+		<!-- Dependent projects -->
 		<dependency>
 			<groupId>com.usg.ssg1</groupId>
 			<artifactId>ssg1-common</artifactId>
@@ -50,7 +50,7 @@
 			<groupId>com.wgs.virago.dao</groupId>
 			<artifactId>wgs-virago-database</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency-->
+		</dependency>
 
 		<!-- AspectJ -->
 		<dependency>
