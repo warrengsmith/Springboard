@@ -15,14 +15,12 @@
 	<br />
 	<br />
 	<div class="container theme-showcase">
+		<img src="<c:url value="/resources/images/virago_banner.jpg" />" alt="Virago Logo"/>
 		<div class="page-header">
-			<h1>
-				Virago&nbsp<small>a great place to buy books!</small>
-			</h1>
 		</div>
 		<div>
 			<table class="table table-hover">
-				<caption>The full list of books available</caption>
+				<caption><b>The full list of books available</b></caption>
 				<thead>
 					<tr>
 						<th>Book Id</th>
