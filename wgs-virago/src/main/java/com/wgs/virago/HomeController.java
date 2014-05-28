@@ -51,7 +51,11 @@ public class HomeController {
 	public String searchSubmit(@ModelAttribute Book book, Model model) {
 		List<Book> bookList = this.bookDAO.searchByTitle(book.getTitle());
 		model.addAttribute("bookList", bookList);
-		model.addAttribute("title", "The full list of books available");
+		if (book.getTitle().isEmpty()) {
+			model.addAttribute("title", "The full list of books available");
+		} else {
+			model.addAttribute("title", "The list of books that match search phrase \"" + book.getTitle() + "\"");
+		}
 		return "bookList";
 	}
 }

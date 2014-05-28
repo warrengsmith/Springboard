@@ -19,7 +19,7 @@
 		<div class="page-header">
 		</div>
 		<div>
-			<table class="table table-hover">
+			<table class="table table-striped table-hover">
 				<caption><b>${title}</b></caption>
 				<thead>
 					<tr>
