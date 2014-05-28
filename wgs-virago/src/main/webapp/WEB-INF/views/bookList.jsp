@@ -20,7 +20,7 @@
 		</div>
 		<div>
 			<table class="table table-hover">
-				<caption><b>The full list of books available</b></caption>
+				<caption><b>${title}</b></caption>
 				<thead>
 					<tr>
 						<th>Book Id</th>
