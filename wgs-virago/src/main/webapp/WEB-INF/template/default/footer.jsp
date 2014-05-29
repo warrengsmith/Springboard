@@ -8,4 +8,7 @@
 		<img src="<c:url value="/resources/images/bootstrap-logo.jpg" />" alt="bootstrap 3.1.1 logo" height="45" /><br/>
 		Virago is powered by Java7-SE (update 51), Spring (4.03), Apache Tiles (3.0.4), H2 Database (1.4.177), BootStrap (3.1.1)<br/>
 	</div>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 </div>
