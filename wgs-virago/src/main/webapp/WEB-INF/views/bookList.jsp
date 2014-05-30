@@ -7,7 +7,7 @@
 			<div class="page-header">
 				<h1>Search Results</h1>
 			</div>
-			<div class="panel panel-success">
+			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">${title}</h3>
 				</div>
