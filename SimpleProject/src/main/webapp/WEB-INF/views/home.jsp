@@ -2,26 +2,21 @@
 <%@ taglib prefix="dandelion" uri="http://github.com/dandelion"%>
 <%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<dandelion:bundle includes="bootstrap3" />
-<dandelion:asset cssExcludes="datatables" />
 <%@ page session="false"%>
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
-	<div class="container theme-showcase">
-		<div class="page-header">
-			<h1>Search Results</h1>
-		</div>
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Search for all books</h3>
+		<div class="container theme-showcase">
+			<div class="page-header">
+				<h1>Search Results</h1>
 			</div>
 			<br />
-			<datatables:table id="bookList" data="${bookList}" theme="bootstrap3" themeOption="eggplant" cssClass="table table-striped table-hover">
+			<datatables:table id="bookList" data="${bookList}" theme="jqueryui" themeOption="smoothness"
+				cssClass="table hover table-striped table-bordered table-condensed table-curved table-hover">
 				<datatables:column title="Id" property="id" />
 				<datatables:column title="Title" property="title" />
 				<datatables:column title="Price" property="price" />
 			</datatables:table>
+			<br />
 		</div>
-	</div>
-</tiles:putAttribute>
+	</tiles:putAttribute>
 </tiles:insertDefinition>
