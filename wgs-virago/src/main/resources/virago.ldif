@@ -1,40 +1,40 @@
 version: 1
 
-dn: o=mojo
+dn: o=virago
 objectClass: organization
 objectClass: extensibleObject
 objectClass: top
-o: mojo
+o: virago
 
-dn: ou=users,o=mojo
+dn: ou=users,o=virago
 objectClass: extensibleObject
 objectClass: organizationalUnit
 objectClass: top
 ou: users
 
-dn: ou=groups,o=mojo
+dn: ou=groups,o=virago
 objectClass: extensibleObject
 objectClass: organizationalUnit
 objectClass: top
 ou: groups
 
-dn: cn=User,ou=groups,o=mojo
+dn: cn=User,ou=groups,o=virago
 objectClass: groupOfUniqueNames
 objectClass: top
 cn: User
-uniqueMember: cn=John Milton,ou=users,o=mojo
-uniqueMember: cn=Robert Browning,ou=users,o=mojo
-uniqueMember: cn=Hugo Williams,ou=users,o=mojo
-uniqueMember: cn=John Keats,ou=users,o=mojo
+uniqueMember: cn=John Milton,ou=users,o=virago
+uniqueMember: cn=Robert Browning,ou=users,o=virago
+uniqueMember: cn=Hugo Williams,ou=users,o=virago
+uniqueMember: cn=John Keats,ou=users,o=virago
 
-dn: cn=Admin,ou=groups,o=mojo
+dn: cn=Admin,ou=groups,o=virago
 objectClass: groupOfUniqueNames
 objectClass: top
 cn: Admin
-uniqueMember: cn=Hugo Williams,ou=users,o=mojo
-uniqueMember: cn=John Keats,ou=users,o=mojo
+uniqueMember: cn=Hugo Williams,ou=users,o=virago
+uniqueMember: cn=John Keats,ou=users,o=virago
 
-dn: cn=Robert Browning,ou=users,o=mojo
+dn: cn=Robert Browning,ou=users,o=virago
 objectClass: organizationalPerson
 objectClass: person
 objectClass: inetOrgPerson
@@ -44,7 +44,7 @@ sn: Browning
 uid: rbrowning
 userPassword:: cGFzcw==
 
-dn: cn=John Keats,ou=users,o=mojo
+dn: cn=John Keats,ou=users,o=virago
 objectClass: organizationalPerson
 objectClass: person
 objectClass: inetOrgPerson
@@ -54,7 +54,7 @@ sn: Keats
 uid: jkeats
 userPassword:: cGFzcw==
 
-dn: cn=Hugo Williams,ou=users,o=mojo
+dn: cn=Hugo Williams,ou=users,o=virago
 objectClass: organizationalPerson
 objectClass: person
 objectClass: inetOrgPerson
@@ -64,7 +64,7 @@ sn: Williams
 uid: hwilliams
 userPassword:: cGFzcw==
 
-dn: cn=John Milton,ou=users,o=mojo
+dn: cn=John Milton,ou=users,o=virago
 objectClass: organizationalPerson
 objectClass: person
 objectClass: inetOrgPerson
