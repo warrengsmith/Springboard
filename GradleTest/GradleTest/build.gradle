@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'hello.HelloWorld'
+
+jar {
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } // FAT JAR creation
+	manifest {
+		attributes 'Main-Class': 'hello.HelloWorld'
+	}
+}
+
+// repositories
+repositories {
+	mavenCentral()
+}
+
+repositories {
+	flatDir {
+		dirs 'lib'
+	}
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// dependencies
+dependencies {
+	compile "joda-time:joda-time:2.2"
+}
+
+// jar name
+jar {
+	baseName = 'gs-gradle'
+	version =  '0.1.0'
+}
+
+// wrapper
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
