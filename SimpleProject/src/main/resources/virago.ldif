@@ -1,31 +1,48 @@
-dn: ou=groups,dc=baeldung,dc=com
+dn: ou=roles,dc=baeldung,dc=com
 objectclass: top
 objectclass: organizationalUnit
-ou: groups
+ou: roles
 
 dn: ou=people,dc=baeldung,dc=com
 objectclass: top
 objectclass: organizationalUnit
 ou: people
 
-dn: uid=baeldung,ou=people,dc=baeldung,dc=com
+
+# PEOPLE
+
+dn: uid=wsmith,ou=people,dc=baeldung,dc=com
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
-cn: Jim Beam
-sn: Beam
-uid: baeldung
-userPassword: password
+cn: Warren Smith
+sn: Smith
+uid: wsmith
+userPassword: p1
 
-dn: cn=admin,ou=groups,dc=baeldung,dc=com
+dn: uid=jdoe,ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: John Doe
+sn: Doe
+uid: jdoe
+userPassword: p2
+
+
+# ROLES
+
+dn: cn=ADMIN,ou=roles,dc=baeldung,dc=com
 objectclass: top
 objectclass: groupOfNames
-cn: admin
-member: uid=baeldung,ou=people,dc=baeldung,dc=com
+cn: ADMIN
+member: uid=wsmith,ou=people,dc=baeldung,dc=com
 
-dn: cn=user,ou=groups,dc=baeldung,dc=com
+dn: cn=USER,ou=roles,dc=baeldung,dc=com
 objectclass: top
 objectclass: groupOfNames
-cn: user
-member: uid=baeldung,ou=people,dc=baeldung,dc=com
+cn: USER
+member: uid=wsmith,ou=people,dc=baeldung,dc=com
+member: uid=jdoe,ou=people,dc=baeldung,dc=com
